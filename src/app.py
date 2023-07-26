@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.write (
-    """#My interface
+    """# My interface
 
 This is my interface using Streamlit.       
 """)
