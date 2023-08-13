@@ -16,7 +16,7 @@ def load_ml_components(fp):
     
 # Setup
 ## Variables and constants
-_file_ = "C:\Users\LPM\Desktop\FUNDAMENTALS OF STREAMLIT\src"
+_file_ = "src"
 DIRPATH = os.path.dirname(os.path.realpath(_file_))  
 ml_core_fp = os.path.join(DIRPATH, "assets", "ml", "ml_components.pkl")
 
