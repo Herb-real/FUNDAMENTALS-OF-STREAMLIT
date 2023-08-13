@@ -13,9 +13,30 @@ def load_ml_components(fp):
     with open(fp, "rb") as f:
         object = pickle.load(f)
         return object
+    
+# Setup
+## Variables and constants
+_file_ = "C:\Users\LPM\Desktop\FUNDAMENTALS OF STREAMLIT\src"
+DIRPATH = os.path.dirname(os.path.realpath(_file_))  
+ml_core_fp = os.path.join(DIRPATH, "assets", "ml", "ml_components.pkl")
+
+## Execution
+ml_components_dict = load_ml_components(fp=ml_core_fp)
+
+labels = ml_components_dict['labels']
+idx_to_labels = {i: l for (i, l) in enumerate(labels)}
+
+end2end_pipeline = ml_components_dict['pipeline']
+
+
+print(f"\n[Info] Predictable labels: {labels}")
+print(f"\n[Info] Indexes to labels: {idx_to_labels}")
+
+print(f"\n[Info] ML components loaded: {list(ml_components_dict.keys())}")
 
 # image
 st.image("https://www.marktechpost.com/wp-content/uploads/2023/02/stock-market-chart-virtual-screen-with-woman-s-hand-digital-remix-scaled.jpg")
+
 # interface
 with st.sidebar:
     st.markdown("# Hi")
@@ -68,7 +89,23 @@ with st.form(key="information", clear_on_submit=True):
             
                 }   
                     )
-            print(f"[Info] Input data as dataframe:\n{df.to_markdown()}") 
+            print(f"[Info] Input data as dataframe:\n{df.to_markdown()}")
+            
+            df.columns = num_cols+cat_cols
+            df = df[num_cols+cat_cols] #reorder the dataframe
+    
+            # ML part
+            output = end2end_pipeline.predict_proba(df)
+    
+            ## store confidence score/ probability for the predicted class
+            df['confidence score'] = output.max(axis=-1)
+    
+            ## get index of the predicted class
+            predicted_idx = output.argmax(axis=-1)
+    
+            # store index then replace by the matching label
+            df['predicted label'] = predicted_idx
+            df['predicted label'] = df['predicted label'].replace(idx_to_labels) 
    
     
             st.text(f"The Predicted Sales: '{''}'.")
