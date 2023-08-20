@@ -17,3 +17,9 @@ print(f"\n[Info] Predictable labels: {labels}")
 print(f"\n[Info] Indexes to labels: {idx_to_labels}")
 
 print(f"\n[Info] ML components loaded: {list(ml_components_dict.keys())}")
+
+
+ # ML part
+ output = end2end_pipeline.predict_proba(df)
+    
+    
