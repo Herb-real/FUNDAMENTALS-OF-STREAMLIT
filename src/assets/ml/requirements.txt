@@ -1,6 +1,0 @@
-streamlit
-pandas
-scikit-learn
-tabulate
-pickle
-joblib, os
