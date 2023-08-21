@@ -36,6 +36,6 @@ Utilizing the Streamlit library, we'll craft the application. This application w
 _________________________________________________________________________________________________
 To Run the app: Go to your terminal and type:
 
-| streamlit run app.py |
+streamlit run app.py 
 
 Executing this will launch the application and provide you with a hyperlink to open in your web browser. Simply click the link, and you're all set to proceed!
