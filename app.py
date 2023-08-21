@@ -23,24 +23,33 @@ dt_model = components["models"]
 
 # Create the app
 
-st.set_page_config(
-    layout="wide"
-)
+#st.set_page_config(
+#    layout="wide"
+#)
 
 
-# # Add an image or logo to the app
-# image = Image.open('copofav.jpg')
+# Image
+st.image("https://www.marktechpost.com/wp-content/uploads/2023/02/stock-market-chart-virtual-screen-with-woman-s-hand-digital-remix-scaled.jpg")
 
-# # Open the image file
-# st.image(image)
+# interface
+with st.sidebar:
+    st.markdown("# Hi")
+    st.markdown("# Welcome. This app is on time series forecasting")
+    
+st.title ('Sales Prediction in Favorita Stores')
 
-
-# add app title
-st.title("SALES PREDICTION APP")
-
+st.subheader ('Using Time Series Forecasting') 
 
 # Add some text
-st.write("Please ENTER the relevant data and CLICK Predict.")
+st.write("""Welcome to Favorita Corporation, an Ecuadorian company which engages in the development and investment of commercial, industrial, and real estate ventures. Its subsidiaries operate in six countries within the region, namely Panama, Paraguay, Peru, Colombia, Costa Rica, and Chile. The company is committed to delivering top-notch products, services, and experiences in a manner that is both efficient and environmentally responsible, aiming to enhance the overall quality of life.
+
+
+         
+         Please ENTER the relevant data and CLICK Predict.
+         
+         """ )
+
+
 
 # Create the input fields
 input_data = {}
@@ -74,6 +83,7 @@ with col3:
     input_data['day'] = st.slider("Day", 1, 31)
     input_data['dcoilwtico'] = st.slider(
         "DCOILWTICO", min_value=29, step=1, max_value=108)
+    
 
   # Create a button to make a prediction
 if st.button("Predict"):
@@ -102,6 +112,7 @@ if st.button("Predict"):
 
     categorical_columns = ['family', 'state', 'store_type']
     numerical_columns = ['store_nbr', 'onpromotion',
+            'df.columns = num_cols+cat_cols'
                          'cluster', 'dcoilwtico', 'month', 'day']
     # Impute missing values
     input_df_cat = input_df[categorical_columns].copy()
